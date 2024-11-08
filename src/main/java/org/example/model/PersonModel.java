@@ -1,10 +1,17 @@
-package org.example;
+package org.example.model;
 
 public class PersonModel {
     private String gender;
     private int age;
     private String name;
     private int height;
+
+    public PersonModel(String gender, int age, String name, int height) {
+        this.gender = gender;
+        this.age = age;
+        this.name = name;
+        this.height = height;
+    }
 
     public String getGender() {
         return gender;
