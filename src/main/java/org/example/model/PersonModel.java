@@ -1,48 +1,78 @@
 package org.example.model;
 
-public class PersonModel {
+import org.example.data.Location;
+import org.example.description.Lie;
+
+import java.util.Objects;
+
+public abstract class PersonModel extends Lie {
     private String gender;
     private int age;
     private String name;
     private int height;
+    private Location location;
+    private String speech;
+    private boolean lie;
 
-    public PersonModel(String gender, int age, String name, int height) {
+    public PersonModel(String gender,
+                       int age,
+                       String name,
+                       int height,
+                       Location location,
+                       String speech,
+                       boolean lie) {
         this.gender = gender;
         this.age = age;
         this.name = name;
         this.height = height;
+        this.location = location;
+        this.speech = speech;
+        this.lie = lie;
     }
 
-    public String getGender() {
-        return gender;
+    public Location getLocation() {
+        return this.location;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
-    public int getAge() {
-        return age;
+
+    public boolean getLie() {
+        return lie;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setLie(boolean lie) {
+        this.lie = lie;
     }
 
-    public String getName() {
-        return name;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PersonModel that = (PersonModel) o;
+        return age == that.age && height == that.height && lie == that.lie && Objects.equals(gender, that.gender) && Objects.equals(name, that.name) && location == that.location && Objects.equals(speech, that.speech);
     }
 
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public int hashCode() {
+        return Objects.hash(gender, age, name, height, location, speech, lie);
     }
 
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
+    @Override
+    public String toString() {
+        return "PersonModel{" +
+                "gender='" + gender + '\'' +
+                ", age=" + age +
+                ", name='" + name + '\'' +
+                ", height=" + height +
+                ", location=" + location +
+                ", speech='" + speech + '\'' +
+                ", lie=" + lie +
+                '}';
     }
 }
 
