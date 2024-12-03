@@ -14,13 +14,12 @@ public class JoinToWorld {
 
     public JoinToWorld(ArrayList<FullPerson> fullPeople) {
         this.fullPeople = fullPeople;
-        goSayAboutNear(); // персонаж начинает общаться с ближайшим соседом
     }
 
     public void goSayAboutNear() {
         try {
             if (fullPeople.size() >= 2) {
-                fullPeople.getFirst().goActions(fullPeople.get(1));
+                fullPeople.getFirst().goActions(fullPeople);
             }
         } catch (Exception e) {
             System.err.println("Сначала добавьте Action персонажу! Исключение в классе " + getClass() + " exception " + e);

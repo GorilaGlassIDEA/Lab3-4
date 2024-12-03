@@ -8,6 +8,8 @@ import org.example.data.person.Mother;
 import org.example.data.person.Sister;
 import org.example.description.ActionEnum;
 
+import java.util.ArrayList;
+
 public interface SimpleAction {
     //TODO Реализация простых действий присущих всем Person (Interface)
 
@@ -16,7 +18,6 @@ public interface SimpleAction {
         //  где на первом месете стоят все родсветнники для данного человека, а на
         //  втором те кто родсвтенниками не являются
     }
-    void move(ActionEnum obj);
-    void goActions(FullPerson whoseActionNext);
-    void anotherAction(ActionEnum obj);
+    void goActions(ArrayList<FullPerson> whoseActionNext);
+    void move(ActionEnum actionEnum);
 }

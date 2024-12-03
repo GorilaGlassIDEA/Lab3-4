@@ -13,5 +13,10 @@ public enum ActionEnum {
     SHOW_TO,
     CANT_LIE,
     SAY_THAT,
-    SAY_TRUE
+    SAY_TRUE,
+    KNOW_TRUTH,
+    EXIST,
+    BE_WAR,
+    BE_HUNTER,
+    BE_ILL
 }
