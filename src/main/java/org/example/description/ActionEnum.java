@@ -18,5 +18,6 @@ public enum ActionEnum {
     EXIST,
     BE_WAR,
     BE_HUNTER,
-    BE_ILL
+    BE_ILL,
+    NO
 }

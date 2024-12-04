@@ -16,9 +16,11 @@ import org.example.description.ActionEnum;
 //5. Решать
 //6. Выпытывать правду
 
+/**
+ * Обязательный интерфейс любого персонажа, должен наследоваться от всех интерфейсов
+ * действий/настроений/локации и тд
+ **/
 public interface DefaultAction extends SimpleAction {
-    //TODO Обязательный интерфейс любого персонажа, долежен наследоваться от всех интерфейсов
-    // действий/настроений/локации и тд
     default void printAction(ActionEnum action) {
 
         switch (action) {
@@ -27,7 +29,7 @@ public interface DefaultAction extends SimpleAction {
             case TRAVEL_TO_FROM -> System.out.print("приехать из ");
             case TRAVEL_FROM_TO -> System.out.print("поехать к ");
             case LIE_WHO -> System.out.print("соврать кому-то с именем ");
-            case INTERESTED_IN -> System.out.print("интересоваться тем самым ");
+            case INTERESTED_IN -> System.out.print("было очень интересно узнать ");
             case HEAR_FROM -> System.out.print("услышать от ");
             case SAY_WHO -> System.out.print("сказать тому самому ");
             case DECIDE -> System.out.print("решить именно это ");
@@ -40,10 +42,9 @@ public interface DefaultAction extends SimpleAction {
             case BE_WAR -> System.out.print("быть на войне ");
             case BE_HUNTER -> System.out.print("быть на охоте ");
             case BE_ILL -> System.out.print("быть больным ");
+            default ->  {}
         }
 
     }
-
-    ; // выполнить действие из SimpleAction (interface)
 
 }

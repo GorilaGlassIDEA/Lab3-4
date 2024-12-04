@@ -3,12 +3,12 @@ package org.example.data.person;
 import org.example.data.DataArrays;
 import org.example.data.models.Contact;
 import org.example.data.models.FullPerson;
-import org.example.data.models.Mood;
+
 import org.example.description.ActionEnum;
 
-import javax.xml.crypto.Data;
+
 import java.util.ArrayList;
-import java.util.Arrays;
+
 
 public class MainPerson extends FullPerson {
 
@@ -16,6 +16,15 @@ public class MainPerson extends FullPerson {
         super(name, Contact.NOT_EXIST);
 
         setActionEnums(DataArrays.mainAction);
+    }
+
+    @Override
+    public Contact getContact(FullPerson anotherPerson) {
+        if (anotherPerson instanceof Mother || anotherPerson instanceof Sister)
+            return Contact.RELATIVES;
+        if (anotherPerson instanceof Husband)
+            return Contact.PARTNER;
+        else return Contact.NOT_RELATIVES;
     }
 
 
@@ -31,7 +40,7 @@ public class MainPerson extends FullPerson {
             printAction(getActionEnums().getFirst());
             System.out.println(unknownPerson.getName());
             removeFirstAction();
-            unknownPerson.goActions(whoseActionNext);
+//            unknownPerson.goActions(whoseActionNext);
         } catch (NullPointerException e) {
             System.err.println(this.getName() + " больше нет действий");
         }

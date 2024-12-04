@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.data.models.Contact;
 import org.example.data.models.FullPerson;
 
 import org.example.data.person.Husband;
@@ -28,8 +29,9 @@ public class Main {
                 DoraHusband
         ));
 
+
         newWorld = new JoinToWorld(fullPeople);
-        newWorld.goSayAboutNear();
+        newWorld.go();
 
     }
 

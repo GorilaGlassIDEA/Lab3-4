@@ -1,34 +1,43 @@
 package org.example.data.models;
 
 import org.example.action.SimpleAction;
+import org.example.data.DataArrays;
+import org.example.data.person.MainPerson;
+import org.example.data.person.Mother;
 import org.example.description.ActionEnum;
 
 import java.util.ArrayList;
-import java.util.Objects;
+import java.util.List;
 import java.util.Random;
 
 /**
  * Помимо обязательных методов из {@link DefaultAction} (Interface)
  * данный класс добавляет обязательные поля для кадого персонажа
+ * Массив {@code relatives} это структура данных с иерархией родственных
+ * связе, где на нулевом индексе находится список родссвтенников,
+ * на втором список партнеров, на третем список остальных людей
  */
 public abstract class FullPerson implements DefaultAction, SimpleAction {
     private final String name;
     private ArrayList<ActionEnum> actionEnums = new ArrayList<>();
-    private Contact contact = Contact.NOT_EXIST;
+
+    private Contact contact;
+    // Удалить contact
     //TODO помимо обязательных методов из EmptyPerson (Interface)
     // данный класс добавляет обязательные поля для кадого персонажа
 
-    public FullPerson(String name, ArrayList<ActionEnum> actionEnums, Contact contact) {
-        this.name = name;
-        this.actionEnums = actionEnums;
-        this.contact = contact;
-    }
 
     public FullPerson(String name, Contact contact) {
         this.name = name;
         this.contact = contact;
     }
 
+    public FullPerson(String name) {
+        this.name = name;
+//        setContact(DataArrays.relativesDoragly);
+    }
+
+    public abstract Contact getContact(FullPerson anotherPerson);
     public ArrayList<ActionEnum> getActionEnums() {
         return actionEnums;
     }
@@ -52,6 +61,7 @@ public abstract class FullPerson implements DefaultAction, SimpleAction {
     public void setActionEnums(ArrayList<ActionEnum> actionEnums) {
         this.actionEnums = actionEnums;
     }
+
     public void setActions(ActionEnum action) {
         actionEnums.add(action);
     }
