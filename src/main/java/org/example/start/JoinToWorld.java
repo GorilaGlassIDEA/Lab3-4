@@ -1,6 +1,5 @@
 package org.example.start;
 
-import org.example.Main;
 import org.example.data.models.FullPerson;
 import org.example.data.person.Husband;
 import org.example.data.person.MainPerson;
@@ -10,11 +9,13 @@ import org.example.data.person.Sister;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
-
+/**
+ * Класс объединяющий всех персонажей а так
+ * же реализующий все родственные связи и логику
+ * взаимодействия персонажей
+ **/
 public class JoinToWorld {
-    //TODO класс объединяющий модели и окружение так
-    // же реализующий все родственные связи и логику
-    // взаимодействия персонажей
+
     private ArrayList<FullPerson> allPeople;
     private Mother mother;
     private Husband husband;
@@ -25,11 +26,17 @@ public class JoinToWorld {
         this.allPeople = allPerson;
     }
 
-    public void go() {
-        check();
-        mother.goActions(allPeople);
+    public void go() throws NullPointerException{
+        whoIsThisPerson();
+        try {
+            System.out.printf(mother.getName() + " ");
+            mother.goActions().goActions();
+            System.out.print(mother.getContact(husband));
+        } catch (NoSuchElementException e) {
+            System.err.println("Вызов несуществующего действия");
+        }
         String result = "Mother Doragly было очень интересно увидеть Husband." +
-                " Doragly сразу же отправилась в путь, захватив с " +
+                " Она сразу же отправилась в путь, захватив с " +
                 "собой Sister. Doragly с большим удовольствием показывала им свой дворец." +
                 " Когда же Relatives интересовались ее Husband, Doragly лгала им, как могла, говоря, " +
                 "то Husband на War, то на Hunter, то просто Ill. Но поскольку она была очень" +
@@ -39,7 +46,7 @@ public class JoinToWorld {
 
     }
 
-    public void check() {
+    public void whoIsThisPerson() {
         for (FullPerson person : allPeople) {
             if (person instanceof Mother)
                 mother = (Mother) person;

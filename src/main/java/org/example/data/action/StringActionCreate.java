@@ -1,7 +1,4 @@
-package org.example.data.models;
-
-import org.example.action.SimpleAction;
-import org.example.description.ActionEnum;
+package org.example.data.action;
 
 //1. Показать дворец
 //2. Лгать родственникам
@@ -20,7 +17,7 @@ import org.example.description.ActionEnum;
  * Обязательный интерфейс любого персонажа, должен наследоваться от всех интерфейсов
  * действий/настроений/локации и тд
  **/
-public interface DefaultAction extends SimpleAction {
+public interface StringActionCreate extends SimpleAction {
     default void printAction(ActionEnum action) {
 
         switch (action) {
@@ -29,7 +26,7 @@ public interface DefaultAction extends SimpleAction {
             case TRAVEL_TO_FROM -> System.out.print("приехать из ");
             case TRAVEL_FROM_TO -> System.out.print("поехать к ");
             case LIE_WHO -> System.out.print("соврать кому-то с именем ");
-            case INTERESTED_IN -> System.out.print("было очень интересно узнать ");
+            case INTERESTED_IN -> System.out.print("было очень интересно ");
             case HEAR_FROM -> System.out.print("услышать от ");
             case SAY_WHO -> System.out.print("сказать тому самому ");
             case DECIDE -> System.out.print("решить именно это ");

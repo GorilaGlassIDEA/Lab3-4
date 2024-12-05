@@ -1,30 +1,24 @@
 package org.example.data.person;
 
 import org.example.data.DataArrays;
-import org.example.data.models.Contact;
+import org.example.data.properties.Contact;
 import org.example.data.models.FullPerson;
-
-import org.example.description.ActionEnum;
-
-
-import java.util.ArrayList;
-
+import org.example.data.action.ActionEnum;
 
 public class MainPerson extends FullPerson {
-
     public MainPerson(String name) {
-        super(name, Contact.NOT_EXIST);
-
+        super(name);
         setActionEnums(DataArrays.mainAction);
     }
 
     @Override
-    public Contact getContact(FullPerson anotherPerson) {
-        if (anotherPerson instanceof Mother || anotherPerson instanceof Sister)
-            return Contact.RELATIVES;
-        if (anotherPerson instanceof Husband)
-            return Contact.PARTNER;
-        else return Contact.NOT_RELATIVES;
+    public String getContact(FullPerson anotherPerson) {
+//        if (anotherPerson instanceof Mother || anotherPerson instanceof Sister)
+//            return Contact.RELATIVES;
+//        if (anotherPerson instanceof Husband)
+//            return Contact.PARTNER;
+//        else return Contact.NOT_RELATIVES;
+        return "TODO";
     }
 
 
@@ -34,18 +28,10 @@ public class MainPerson extends FullPerson {
     }
 
     @Override
-    public void goActions(ArrayList<FullPerson> whoseActionNext) {
-        try {
-            FullPerson unknownPerson = getPersonCompareThis(whoseActionNext, this);
-            printAction(getActionEnums().getFirst());
-            System.out.println(unknownPerson.getName());
-            removeFirstAction();
-//            unknownPerson.goActions(whoseActionNext);
-        } catch (NullPointerException e) {
-            System.err.println(this.getName() + " больше нет действий");
-        }
+    public FullPerson goActions() {
+        printAction(getAllActions().removeFirst());
+        return this;
     }
-
 
 
 }

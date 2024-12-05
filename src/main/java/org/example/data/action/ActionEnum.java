@@ -1,4 +1,4 @@
-package org.example.description;
+package org.example.data.action;
 
 public enum ActionEnum {
     LOOK_AT,

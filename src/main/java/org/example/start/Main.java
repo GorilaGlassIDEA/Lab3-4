@@ -1,13 +1,10 @@
-package org.example;
+package org.example.start;
 
-import org.example.data.models.Contact;
 import org.example.data.models.FullPerson;
 
 import org.example.data.person.Husband;
 import org.example.data.person.MainPerson;
 import org.example.data.person.Mother;
-
-import org.example.start.JoinToWorld;
 
 
 import java.util.ArrayList;
@@ -19,9 +16,9 @@ public class Main {
     static ArrayList<FullPerson> fullPeople;
 
     public static void main(String[] args) {
-        MainPerson Dora = new MainPerson("Doragly");
-        Mother DoraMother = new Mother("Mother");
-        Husband DoraHusband = new Husband("Husband");
+        MainPerson Dora = new MainPerson("Дорагли");
+        Mother DoraMother = new Mother("Мама Дорагли");
+        Husband DoraHusband = new Husband("Муж дорагли");
 
         fullPeople = new ArrayList<>(List.of(
                 Dora,
@@ -31,7 +28,11 @@ public class Main {
 
 
         newWorld = new JoinToWorld(fullPeople);
-        newWorld.go();
+        try {
+            newWorld.go();
+        }catch (NullPointerException e){
+            System.err.println("Не все персонажи созданы! Исключение NullPointerException");
+        }
 
     }
 

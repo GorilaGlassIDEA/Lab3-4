@@ -1,15 +1,15 @@
 package org.example.data;
 
 import org.example.data.models.FullPerson;
-import org.example.description.ActionEnum;
+import org.example.data.action.ActionEnum;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public record DataArrays(FullPerson fullPerson) {
     public static ArrayList<ActionEnum> motherAction = new ArrayList<>(Arrays.asList(
-            ActionEnum.SEE_WHOSE,
             ActionEnum.INTERESTED_IN,
+            ActionEnum.SEE_WHOSE,
             ActionEnum.TRAVEL_FROM_TO,
             ActionEnum.INTERESTED_IN,
             ActionEnum.DECIDE,
