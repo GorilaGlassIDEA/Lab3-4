@@ -9,6 +9,7 @@ import org.example.data.person.Sister;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
+
 /**
  * Класс объединяющий всех персонажей а так
  * же реализующий все родственные связи и логику
@@ -16,7 +17,7 @@ import java.util.NoSuchElementException;
  **/
 public class JoinToWorld {
 
-    private ArrayList<FullPerson> allPeople;
+    private final ArrayList<FullPerson> allPeople;
     private Mother mother;
     private Husband husband;
     private MainPerson mainPerson;
@@ -26,24 +27,44 @@ public class JoinToWorld {
         this.allPeople = allPerson;
     }
 
-    public void go() throws NullPointerException{
+    public void go() throws NullPointerException {
         whoIsThisPerson();
         try {
             System.out.printf(mother.getName() + " ");
             mother.goActions().goActions();
-            System.out.print(mother.getContact(husband));
+            System.out.print(mother.getContact(husband) + "\n" + mother.getName() + " ");
+            mother.goActions();
+            System.out.print(", ");
+            mother.goActions();
+            System.out.println(" " + mother.getContact(sister) + " " + sister.getName());
+            System.out.print(mainPerson.getName() + " ");
+            mainPerson.goActions();
+            System.out.print("своим " + mainPerson.getContact(mother) + " и \n" + mainPerson.getContact(sister) + " свой ");
+            mainPerson.printLocation();
+            System.out.print(". ");
+            System.out.print(mainPerson.getContact(mother) + " и " + mainPerson.getContact(sister) + " ");
+            mother.goActions().goActions();
+            System.out.print(mainPerson.getContact(husband) + " " + mainPerson.getName() + ", но она ");
+            mainPerson.goActions().goActions();
+            System.out.print(husband.getName() + " ");
+            husband.printLocation();
+            System.out.print(".\nНо поскольку " + mainPerson.getName() + " ");
+            mainPerson.goActions();
+            System.out.println(mother.getName() + " и " + sister.getName());
+            mother.goActions();
+            System.out.print("у " + mainPerson.getName() + " ");
+            mainPerson.goActions();
+            System.out.print(" они ");
+            sister.goActions().goActions();
+            System.out.print(mainPerson.getName());
+            System.out.print(".\nОна ");
+            mainPerson.goActions();
+
+
+
         } catch (NoSuchElementException e) {
             System.err.println("Вызов несуществующего действия");
         }
-        String result = "Mother Doragly было очень интересно увидеть Husband." +
-                " Она сразу же отправилась в путь, захватив с " +
-                "собой Sister. Doragly с большим удовольствием показывала им свой дворец." +
-                " Когда же Relatives интересовались ее Husband, Doragly лгала им, как могла, говоря, " +
-                "то Husband на War, то на Hunter, то просто Ill. Но поскольку она была очень" +
-                " правдивой девушкой, то как следует врать не умела, и мать с сестрой решили, " +
-                "что у нее вообще нет мужа. Они принялись выпытывать у нее правду. " +
-                "Не выдержав их расспросов, Дорагли рассказала им всю правду.\n";
-
     }
 
     public void whoIsThisPerson() {

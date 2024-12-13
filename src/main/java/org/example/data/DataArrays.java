@@ -11,7 +11,9 @@ public record DataArrays(FullPerson fullPerson) {
             ActionEnum.INTERESTED_IN,
             ActionEnum.SEE_WHOSE,
             ActionEnum.TRAVEL_FROM_TO,
+            ActionEnum.TAKE_WITH_U,
             ActionEnum.INTERESTED_IN,
+            ActionEnum.KNOW,
             ActionEnum.DECIDE,
             ActionEnum.KNOW_TRUTH));
 
@@ -26,9 +28,11 @@ public record DataArrays(FullPerson fullPerson) {
             ActionEnum.LIE_WHO,
             ActionEnum.SAY_THAT,
             ActionEnum.CANT_LIE,
+            ActionEnum.NOT_BE_HUSBAND,
             ActionEnum.SAY_TRUE));
     public static ArrayList<ActionEnum> sisterAction = new ArrayList<>(Arrays.asList(
-            /* TODO: не заданы действия для sister */
+            ActionEnum.DECIDE,
+            ActionEnum.KNOW_TRUTH
     ));
 
 }

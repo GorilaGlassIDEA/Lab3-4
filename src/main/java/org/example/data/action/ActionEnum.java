@@ -19,5 +19,7 @@ public enum ActionEnum {
     BE_WAR,
     BE_HUNTER,
     BE_ILL,
-    NO
+    TAKE_WITH_U,
+    KNOW,
+    NOT_BE_HUSBAND
 }

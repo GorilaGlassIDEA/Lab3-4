@@ -1,11 +1,12 @@
 package org.example.data.models;
 
+import org.example.data.location.Location;
 import org.example.data.action.StringActionCreate;
 import org.example.data.action.SimpleAction;
 import org.example.data.action.ActionEnum;
-import org.example.data.properties.Contact;
 
 import java.util.ArrayList;
+
 /**
  * Помимо обязательных методов из {@link StringActionCreate} (Interface)
  * данный класс добавляет обязательные поля для кадого персонажа
@@ -13,9 +14,12 @@ import java.util.ArrayList;
  * связе, где на нулевом индексе находится список родссвтенников,
  * на втором список партнеров, на третем список остальных людей
  */
-public abstract class FullPerson implements StringActionCreate, SimpleAction {
+public abstract class FullPerson implements StringActionCreate, SimpleAction{
     private String name;
+    private Location location;
     private ArrayList<ActionEnum> actionEnums = new ArrayList<>();
+
+
 
     public FullPerson(String name) {
         this.name = name;
@@ -26,6 +30,7 @@ public abstract class FullPerson implements StringActionCreate, SimpleAction {
     public ArrayList<ActionEnum> getAllActions() {
         return actionEnums;
     }
+
     public void setActionEnums(ArrayList<ActionEnum> actionEnums) {
         this.actionEnums = actionEnums;
     }
@@ -38,4 +43,16 @@ public abstract class FullPerson implements StringActionCreate, SimpleAction {
         return name;
     }
 
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+    protected abstract void printLocation();
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 }
