@@ -6,6 +6,7 @@ import org.example.data.action.SimpleAction;
 import org.example.data.action.ActionEnum;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Помимо обязательных методов из {@link StringActionCreate} (Interface)
@@ -54,5 +55,26 @@ public abstract class FullPerson implements StringActionCreate, SimpleAction{
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        FullPerson that = (FullPerson) o;
+        return Objects.equals(name, that.name) && location == that.location && Objects.equals(actionEnums, that.actionEnums);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, location, actionEnums);
+    }
+
+    @Override
+    public String toString() {
+        return "FullPerson{" +
+                "name='" + name + '\'' +
+                ", location=" + location +
+                ", actionEnums=" + actionEnums +
+                '}';
     }
 }
